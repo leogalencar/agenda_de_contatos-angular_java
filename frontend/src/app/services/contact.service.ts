@@ -19,4 +19,8 @@ export class ContactService {
   saveContact(contact: IContact): Observable<IContact> {
     return this.http.post<IContact>(this.url, contact);
   }
+
+  deleteContact(contact: IContact): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${contact.id}`);
+  }
 }

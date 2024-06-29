@@ -52,6 +52,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deleteContact(contact: IContact) {
+    this.contactService.deleteContact(contact).subscribe({
+      next: () => this.getContacts()
+    })
+  }
+
   updateContact(contact: IContact) {
     console.log(contact);
     console.log('edit');

@@ -32,17 +32,6 @@
       "gender": "Masculino",
       "birthday": "2001-01-11",
       "isFavorite": true
-    },
-    {
-      "id": 4,
-      "name": "Teste",
-      "email": "teste@teste.com",
-      "phone": "(11) 1111-1111",
-      "cellphone": "(11) 11111-1111",
-      "city": "São Paulo",
-      "gender": "Masculino",
-      "birthday": "2024-06-26",
-      "isFavorite": false
     }
   ]
 }
