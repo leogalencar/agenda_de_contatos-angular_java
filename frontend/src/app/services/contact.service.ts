@@ -23,4 +23,8 @@ export class ContactService {
   deleteContact(contact: IContact): Observable<void> {
     return this.http.delete<void>(`${this.url}/${contact.id}`);
   }
+
+  updateContact(contact: IContact): Observable<IContact> {
+    return this.http.put<IContact>(`${this.url}/${contact.id}`, contact);
+  }
 }

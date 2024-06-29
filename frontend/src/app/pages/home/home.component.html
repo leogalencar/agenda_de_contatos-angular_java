@@ -16,7 +16,7 @@
         placeholder="Pesquisar por contatos">
     </div>
     <div class="relative">
-      <a href="#" type="button" data-modal-target="contactFormModal" data-modal-show="contactFormModal"
+      <a href="#" type="button"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         (click)="handleNewContact()">Novo
         contato</a>
@@ -91,7 +91,7 @@
               <div class="grid grid-cols-2 gap-6 w-max">
 
                 <!-- Modal toggle -->
-                <a href="#" type="button" data-modal-target="contactFormModal" data-modal-show="contactFormModal"
+                <a href="#" type="button"
                   class="w-24 font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   (click)="handleEditContact(contact)">Editar contato</a>
                 <button class="w-24 font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -104,7 +104,7 @@
       </tbody>
     </table>
     <!-- Edit user modal -->
-    <div id="contactFormModal" tabindex="-1" aria-hidden="true"
+    <div id="contactFormModal" tabindex="-1"
       class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->

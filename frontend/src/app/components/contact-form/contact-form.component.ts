@@ -78,6 +78,10 @@ export class ContactFormComponent implements OnChanges {
     this.formSubmitted.emit(this.formGroupContact.value);
   }
 
+  cancel() {
+    this.formSubmitted.emit(null);
+  }
+
   formatPhone(phone: string): string {
     const phonePattern = /^(\d{2})(\d{4})(\d{4})$/;
     const phoneFormat = '(1) 2-3';
