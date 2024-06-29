@@ -1,51 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IContact } from '../../interfaces/contact';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   formTitle: string = ''
   formAction!: 'save' | 'edit';
   formSelectedContact: IContact | null = null;
 
-  contacts: IContact[] = [
-    {
-      id: 1,
-      name: 'Neil Sims',
-      email: 'neil.sims@gmail.com',
-      phone: '(11) 9999-9999',
-      cellphone: '(11) 99999-9999',
-      city: 'Itu',
-      gender: 'Masculino',
-      birthday: '2001-01-11',
-      isFavorite: true,
-    },
-    {
-      id: 1,
-      name: 'Neil Sims 2',
-      email: 'neil.sims@gmail.com',
-      phone: '(11) 9999-9999',
-      cellphone: '(11) 99999-9999',
-      city: 'Itu',
-      gender: 'Masculino',
-      birthday: '2001-01-11',
-      isFavorite: false,
-    },
-    {
-      id: 1,
-      name: 'Neil Sims 3',
-      email: 'neil.sims@gmail.com',
-      phone: '(11) 9999-9999',
-      cellphone: '(11) 99999-9999',
-      city: 'Itu',
-      gender: 'Masculino',
-      birthday: '2001-01-11',
-      isFavorite: true,
-    },
-  ]
+  contacts: IContact[] = [];
+
+  constructor(private contactService: ContactService) {}
+
+  ngOnInit(): void {
+    this.getContacts();
+  }
 
   handleNewContact() {
     this.formTitle = 'Novo contato';
@@ -65,6 +38,12 @@ export class HomeComponent {
     else {
       this.updateContact(contact);
     }
+  }
+
+  getContacts() {
+    this.contactService.getContacts().subscribe({
+      next: data => this.contacts = data
+    });
   }
 
   saveContact(contact: IContact) {

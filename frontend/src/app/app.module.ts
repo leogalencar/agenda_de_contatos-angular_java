@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    HttpClientModule
   ],
   providers: [
     provideNgxMask()

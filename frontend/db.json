@@ -1,0 +1,37 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Neil Sims",
+      "email": "neil.sims@gmail.com",
+      "phone": "(11) 9999-9999",
+      "cellphone": "(11) 99999-9999",
+      "city": "Itu",
+      "gender": "Masculino",
+      "birthday": "2001-01-11",
+      "isFavorite": true
+    },
+    {
+      "id": 1,
+      "name": "Neil Sims 2",
+      "email": "neil.sims@gmail.com",
+      "phone": "(11) 9999-9999",
+      "cellphone": "(11) 99999-9999",
+      "city": "Itu",
+      "gender": "Masculino",
+      "birthday": "2001-01-11",
+      "isFavorite": false
+    },
+    {
+      "id": 1,
+      "name": "Neil Sims 3",
+      "email": "neil.sims@gmail.com",
+      "phone": "(11) 9999-9999",
+      "cellphone": "(11) 99999-9999",
+      "city": "Itu",
+      "gender": "Masculino",
+      "birthday": "2001-01-11",
+      "isFavorite": true
+    }
+  ]
+}
