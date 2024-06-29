@@ -1,4 +1,10 @@
-import { Component, OnChanges, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { IContact } from '../../interfaces/contact';
 import { ContactService } from '../../services/contact.service';
 import { Router } from '@angular/router';
@@ -17,6 +23,10 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
 
   contacts: IContact[] = [];
 
+  filterText: string = '';
+  filterTimeout: any;
+  filteredContacts: IContact[] = [];
+
   constructor(
     private contactService: ContactService,
     private renderer: Renderer2,
@@ -34,6 +44,26 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy(): void {
     if (this.clickListener) {
       this.clickListener();
+    }
+  }
+
+  debounceFilterData(delay: number = 300): void {
+    clearTimeout(this.filterTimeout);
+
+    this.filterTimeout = setTimeout(() => {
+      this.filterData();
+    }, delay);
+  }
+
+  filterData(): void {
+    if (this.filterText === '') {
+      this.filteredContacts = this.contacts;
+    } else {
+      this.filteredContacts = this.contacts
+        .filter((contact) =>
+          contact.name.toLowerCase().includes(this.filterText.toLowerCase())
+        )
+        .sort();
     }
   }
 
@@ -77,11 +107,16 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
 
     this.isFormModalOpen = false;
     this.updateContent();
+
+    this.filterText = '';
   }
 
   getContacts() {
     this.contactService.getContacts().subscribe({
-      next: (data) => (this.contacts = data),
+      next: (data) => {
+        this.contacts = data;
+        this.filteredContacts = data;
+      },
     });
   }
 

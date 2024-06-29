@@ -13,7 +13,9 @@
       </div>
       <input type="text" id="table-search-users"
         class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Pesquisar por contatos">
+        placeholder="Pesquisar por contatos"
+        [(ngModel)]="filterText"
+        (input)="debounceFilterData()">
     </div>
     <div class="relative">
       <button type="button"
@@ -23,7 +25,7 @@
     </div>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr class="text-center">
           <th scope="col" class="px-6 py-3">
@@ -55,7 +57,7 @@
       <tbody>
         <tr
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer"
-          *ngFor="let contact of contacts" (click)="navigateToContactDetails(contact.id)">
+          *ngFor="let contact of filteredContacts" (click)="navigateToContactDetails(contact.id)">
           <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
             <img class="w-10 h-10 rounded-full" src="./assets/profilePicExample.jpg" alt="Jese image">
             <div class="ps-3">
