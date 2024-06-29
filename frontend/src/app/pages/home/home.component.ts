@@ -47,8 +47,9 @@ export class HomeComponent implements OnInit {
   }
 
   saveContact(contact: IContact) {
-    console.log(contact);
-    console.log('save');
+    this.contactService.saveContact(contact).subscribe({
+      next: data => {console.log(data); this.contacts.push(data)}
+    });
   }
 
   updateContact(contact: IContact) {

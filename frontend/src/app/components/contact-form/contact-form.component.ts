@@ -30,7 +30,7 @@ export class ContactFormComponent implements OnChanges {
       city: [''],
       gender: ['Selecione o seu sexo'],
       birthday: [''],
-      isFavorite: [''],
+      isFavorite: [false],
     });
   }
 
@@ -51,6 +51,10 @@ export class ContactFormComponent implements OnChanges {
   }
 
   onSubmit() {
+    if (!this.formGroupContact.value.isFavorite) {
+      this.formGroupContact.patchValue({ isFavorite: false })
+    }
+
     if (this.formGroupContact.value.phone) {
       const formattedPhone = this.formatPhone(
         this.formGroupContact.value.phone

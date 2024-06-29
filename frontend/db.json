@@ -12,7 +12,7 @@
       "isFavorite": true
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Neil Sims 2",
       "email": "neil.sims@gmail.com",
       "phone": "(11) 9999-9999",
@@ -23,7 +23,7 @@
       "isFavorite": false
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "Neil Sims 3",
       "email": "neil.sims@gmail.com",
       "phone": "(11) 9999-9999",
@@ -32,6 +32,17 @@
       "gender": "Masculino",
       "birthday": "2001-01-11",
       "isFavorite": true
+    },
+    {
+      "id": 4,
+      "name": "Teste",
+      "email": "teste@teste.com",
+      "phone": "(11) 1111-1111",
+      "cellphone": "(11) 11111-1111",
+      "city": "São Paulo",
+      "gender": "Masculino",
+      "birthday": "2024-06-26",
+      "isFavorite": false
     }
   ]
 }
