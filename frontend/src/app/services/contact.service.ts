@@ -16,6 +16,10 @@ export class ContactService {
     return this.http.get<IContact[]>(this.url);
   }
 
+  getContactById(contactId: number): Observable<IContact> {
+    return this.http.get<IContact>(`${this.url}/${contactId}`)
+  }
+
   saveContact(contact: IContact): Observable<IContact> {
     return this.http.post<IContact>(this.url, contact);
   }

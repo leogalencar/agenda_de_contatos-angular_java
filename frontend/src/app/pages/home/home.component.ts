@@ -1,13 +1,14 @@
-import { Component, OnChanges, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { IContact } from '../../interfaces/contact';
 import { ContactService } from '../../services/contact.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit, OnChanges, OnDestroy {
   formTitle: string = '';
   formAction!: 'save' | 'edit';
   formSelectedContact: IContact | null = null;
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit, OnChanges {
 
   constructor(
     private contactService: ContactService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +29,12 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.updateContent();
+  }
+
+  ngOnDestroy(): void {
+    if (this.clickListener) {
+      this.clickListener();
+    }
   }
 
   handleNewContact() {
@@ -41,13 +49,19 @@ export class HomeComponent implements OnInit, OnChanges {
     }, 0);
   }
 
-  handleEditContact(contact: IContact) {
+  handleEditContact(contact: IContact, event: Event) {
+    event.stopPropagation();
+
     this.formTitle = 'Editar contato';
     this.formAction = 'edit';
     this.formSelectedContact = contact;
 
     this.isFormModalOpen = true;
     this.updateContent();
+
+    setTimeout(() => {
+      this.addOutsideModalClickListener();
+    }, 0);
   }
 
   handleFormSubmit(contact: IContact) {
@@ -77,7 +91,9 @@ export class HomeComponent implements OnInit, OnChanges {
     });
   }
 
-  deleteContact(contact: IContact) {
+  deleteContact(contact: IContact, event: Event) {
+    event.stopPropagation();
+
     this.contactService.deleteContact(contact).subscribe({
       next: () => this.getContacts(),
     });
@@ -87,6 +103,10 @@ export class HomeComponent implements OnInit, OnChanges {
     this.contactService.updateContact(contact).subscribe({
       next: () => this.getContacts(),
     });
+  }
+
+  navigateToContactDetails(id: number) {
+    this.router.navigate(['/contacts', id]);
   }
 
   updateContent() {
