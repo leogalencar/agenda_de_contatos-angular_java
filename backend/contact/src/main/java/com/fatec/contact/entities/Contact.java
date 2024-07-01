@@ -15,25 +15,25 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(length = 40, nullable = false)
     private String name;
 
-    @Column
+    @Column(length = 40, nullable = false)
     private String email;
 
-    @Column
+    @Column(length = 14)
     private String phone;
 
-    @Column
+    @Column(length = 15, nullable = false)
     private String cellphone;
 
-    @Column
+    @Column(length = 40)
     private String city;
 
-    @Column
+    @Column(length = 9, nullable = false)
     private String gender;
 
-    @Column
+    @Column(length = 10)
     private String birthday;
 
     @Column
