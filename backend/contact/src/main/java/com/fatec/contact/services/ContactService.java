@@ -48,4 +48,23 @@ public class ContactService {
             throw new EntityNotFoundException("Contato não cadastrado");
         }
     }
+
+    public void updateContact(int id, ContactRequest request) {
+        try {
+            Contact aux = this.contactRepository.getReferenceById(id);
+
+            aux.setName(request.name());
+            aux.setEmail(request.email());
+            aux.setPhone(request.phone());
+            aux.setCellphone(request.cellphone());
+            aux.setCity(request.city());
+            aux.setGender(request.gender());
+            aux.setBirthday(request.birthday());
+            aux.setIsFavorite(request.isFavorite());
+
+            this.contactRepository.save(aux);
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("Contato não cadastrado");
+        }
+    }
 }
