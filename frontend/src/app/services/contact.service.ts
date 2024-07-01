@@ -8,7 +8,7 @@ import { IContact } from '../interfaces/contact';
 })
 export class ContactService {
 
-  url = 'http://localhost:3000/contacts'
+  url = 'http://localhost:8080/contacts'
 
   constructor(private http: HttpClient) { }
 
