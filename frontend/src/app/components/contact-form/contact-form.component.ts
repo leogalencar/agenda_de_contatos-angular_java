@@ -37,9 +37,6 @@ export class ContactFormComponent implements OnInit, OnChanges {
       category: ['Pessoal', [Validators.required]],
     });
   }
-  // TODO : Fazer validações
-  // TODO : Fazer backend
-  // TODO : fazer upload de imagem de perfil
 
   formGroupContact: FormGroup;
 
