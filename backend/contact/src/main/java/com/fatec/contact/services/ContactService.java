@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fatec.contact.dtos.ContactRequest;
 import com.fatec.contact.dtos.ContactResponse;
 import com.fatec.contact.entities.Contact;
 import com.fatec.contact.mappers.ContactMapper;
@@ -31,5 +32,11 @@ public class ContactService {
         );
 
         return ContactMapper.toDTO(contact);
+    }
+
+    public ContactResponse saveContact(ContactRequest request) {
+        Contact contact = ContactMapper.toEntity(request);
+
+        return ContactMapper.toDTO(this.contactRepository.save(contact));
     }
 }
