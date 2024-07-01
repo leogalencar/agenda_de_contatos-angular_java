@@ -8,6 +8,7 @@ import {
 import { IContact } from '../../interfaces/contact';
 import { ContactService } from '../../services/contact.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
   formSelectedContact: IContact | null = null;
   isFormModalOpen: boolean = false;
   clickListener: (() => void) | undefined;
+  refreshEvent: Subject<void> = new Subject<void>();
 
   contacts: IContact[] = [];
 
@@ -77,6 +79,8 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
     setTimeout(() => {
       this.addOutsideModalClickListener();
     }, 0);
+
+    this.refreshEvent.next();
   }
 
   handleEditContact(contact: IContact, event: Event) {

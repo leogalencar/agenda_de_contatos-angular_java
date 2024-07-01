@@ -3,21 +3,24 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IContact } from '../../interfaces/contact';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.css',
 })
-export class ContactFormComponent implements OnChanges {
+export class ContactFormComponent implements OnInit, OnChanges {
   @Input() title!: string;
   @Input() action!: 'save' | 'edit';
   @Input() contact!: IContact | null;
+  @Input() refreshEvent!: Subject<void>;
   @Output() formSubmitted = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder) {
@@ -38,6 +41,16 @@ export class ContactFormComponent implements OnChanges {
   // TODO : fazer upload de imagem de perfil
 
   formGroupContact: FormGroup;
+
+  ngOnInit(): void {
+      this.refreshEvent.subscribe(() => {
+        this.formGroupContact.reset();
+        this.formGroupContact.controls['gender'].setValue(
+          'Selecione o seu sexo',
+          { onlySelf: true }
+        );
+      })
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['action'] || changes['contact']) {

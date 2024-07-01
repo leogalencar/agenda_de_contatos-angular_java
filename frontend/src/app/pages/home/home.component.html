@@ -110,7 +110,8 @@
       <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <app-contact-form [title]="formTitle" [action]="formAction" [contact]="formSelectedContact"
-          (formSubmitted)="handleFormSubmit($event)"></app-contact-form>
+          (formSubmitted)="handleFormSubmit($event)"
+          [refreshEvent]="refreshEvent"></app-contact-form>
       </div>
     </div>
   </div>
