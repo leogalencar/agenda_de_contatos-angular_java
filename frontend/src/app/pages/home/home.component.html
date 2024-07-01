@@ -61,24 +61,24 @@
           <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
             <img class="w-10 h-10 rounded-full" src="./assets/profilePicExample.jpg" alt="Jese image">
             <div class="ps-3">
-              <div class="text-base font-semibold">{{ contact.name }}</div>
-              <div class="font-normal text-gray-500">{{ contact.email }}</div>
+              <div class="text-base font-semibold">{{ contact.name ? contact.name : "N.A." }}</div>
+              <div class="font-normal text-gray-500">{{ contact.email ? contact.email : "N.A." }}</div>
             </div>
           </th>
           <td class="px-6 py-4 text-center">
-            {{ contact.phone }}
+            {{ contact.phone ? contact.phone : "N.A." }}
           </td>
           <td class="px-6 py-4 text-center">
-            {{ contact.cellphone }}
+            {{ contact.cellphone ? contact.cellphone : "N.A." }}
           </td>
           <td class="px-6 py-4 text-center">
-            {{ contact.city }}
+            {{ contact.city ? contact.city : "N.A." }}
           </td>
           <td class="px-6 py-4 text-center">
-            {{ contact.gender }}
+            {{ contact.gender ? contact.gender : "N.A." }}
           </td>
           <td class="px-6 py-4 text-center">
-            {{ contact.birthday | date: 'dd/MM/yyyy' }}
+            {{ contact.birthday ? (contact.birthday | date: 'dd/MM/yyyy') : "N.A." }}
           </td>
           <td class="px-6 py-4">
             <div class="flex items-center justify-center">

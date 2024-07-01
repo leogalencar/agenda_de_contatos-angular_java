@@ -24,9 +24,9 @@ export class ContactFormComponent implements OnChanges {
     this.formGroupContact = formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      cellphone: ['', Validators.required],
+      cellphone: ['', [Validators.required]],
       city: [''],
       gender: ['Selecione o seu sexo', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]],
       birthday: [''],
