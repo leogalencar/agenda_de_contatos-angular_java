@@ -13,9 +13,7 @@
       </div>
       <input type="text" id="table-search-users"
         class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Pesquisar por contatos"
-        [(ngModel)]="filterText"
-        (input)="debounceFilterData()">
+        placeholder="Pesquisar por contatos" [(ngModel)]="filterText" (input)="debounceFilterData()">
     </div>
     <div class="relative">
       <button type="button"
@@ -93,11 +91,26 @@
               <div class="grid grid-cols-2 gap-6 w-max">
 
                 <!-- Modal toggle -->
-                <button type="button" class="w-24 font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  (click)="handleEditContact(contact, $event)">Editar contato</button>
-                <button class="w-24 font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  (click)="deleteContact(contact, $event)">Excluir
-                  contato</button>
+                <button type="button" [attr.data-tooltip-target]="'tooltip-edit-' + contact.id"
+                  class="w-12 transition-all duration-200 flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  (click)="handleEditContact(contact, $event)">
+                  <mat-icon fontIcon="edit"></mat-icon>
+                </button>
+                <div id="tooltip-edit-{{ contact.id }}" role="tooltip"
+                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-1000 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                  Editar contato
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button [attr.data-tooltip-target]="'tooltip-delete-' + contact.id"
+                  class="w-12 transition-all duration-200 flex items-center justify-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800"
+                  (click)="deleteContact(contact, $event)">
+                  <mat-icon fontIcon="delete"></mat-icon>
+                </button>
+                <div id="tooltip-delete-{{ contact.id }}" role="tooltip"
+                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-1000 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                  Excluir contato
+                  <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
               </div>
             </div>
           </td>
@@ -110,8 +123,7 @@
       <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <app-contact-form [title]="formTitle" [action]="formAction" [contact]="formSelectedContact"
-          (formSubmitted)="handleFormSubmit($event)"
-          [refreshEvent]="refreshEvent"></app-contact-form>
+          (formSubmitted)="handleFormSubmit($event)" [refreshEvent]="refreshEvent"></app-contact-form>
       </div>
     </div>
   </div>

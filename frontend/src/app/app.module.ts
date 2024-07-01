@@ -11,13 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactFormComponent,
     ContactDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,11 +28,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     FormsModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
   ],
-  providers: [
-    provideNgxMask()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideNgxMask(), provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
