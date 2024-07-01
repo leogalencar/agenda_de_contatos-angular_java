@@ -39,6 +39,9 @@ public class Contact {
     @Column
     private Boolean isFavorite;
 
+    @Column(nullable = false)
+    private String category;
+
     public Integer getId() {
         return id;
     }
@@ -109,6 +112,14 @@ public class Contact {
 
     public void setIsFavorite(Boolean isFavorite) {
         this.isFavorite = isFavorite;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

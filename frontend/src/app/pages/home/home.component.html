@@ -17,9 +17,11 @@
     </div>
     <div class="relative">
       <button type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        (click)="handleNewContact()">Novo
-        contato</button>
+        class="flex items-center gap-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        (click)="handleNewContact()">
+        <mat-icon fontIcon="group_add"></mat-icon>
+        <span class="font-medium font-inter">Novo contato</span>
+      </button>
     </div>
   </div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -58,6 +60,14 @@
           *ngFor="let contact of filteredContacts" (click)="navigateToContactDetails(contact.id)">
           <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
             <img class="w-10 h-10 rounded-full" src="./assets/profilePicExample.jpg" alt="Jese image">
+            <div class="ps-3 flex items-center">
+              <mat-icon
+              fontIcon="{{ contact.category === 'Pessoal' ? 'group' : 'work' }}"
+              [ngClass]="{
+              'text-blue-400': contact.category === 'Pessoal',
+              'text-amber-600': contact.category === 'Profissional'
+              }"></mat-icon>
+            </div>
             <div class="ps-3">
               <div class="text-base font-semibold">{{ contact.name ? contact.name : "N.A." }}</div>
               <div class="font-normal text-gray-500">{{ contact.email ? contact.email : "N.A." }}</div>

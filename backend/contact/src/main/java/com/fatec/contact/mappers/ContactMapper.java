@@ -16,6 +16,7 @@ public class ContactMapper {
         contact.setGender(request.gender());
         contact.setBirthday(request.birthday());
         contact.setIsFavorite(request.isFavorite());
+        contact.setCategory(request.category());
 
         return contact;
     }
@@ -30,7 +31,8 @@ public class ContactMapper {
             contact.getCity(),
             contact.getGender(),
             contact.getBirthday(),
-            contact.getIsFavorite()
+            contact.getIsFavorite(),
+            contact.getCategory()
         );
     }
 }

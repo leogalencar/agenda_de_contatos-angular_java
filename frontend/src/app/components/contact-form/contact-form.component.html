@@ -78,6 +78,24 @@
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Itu" formControlName="birthday">
       </div>
+      <div class="col-span-6 sm:col-span-3">
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de contato*</label>
+        <div class="flex p-2.5">
+          <div class="flex items-center me-4">
+            <input id="inline-radio" type="radio" value="Pessoal" name="inline-radio-group" formControlName="category"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pessoal</label>
+          </div>
+          <div class="flex items-center me-4">
+            <input id="inline-2-radio" type="radio" value="Profissional" name="inline-radio-group" formControlName="category"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Profissional</label>
+          </div>
+          <p class="mt-2 text-sm text-red-600 dark:text-red-500"
+          *ngIf="category.touched && category.hasError('required')">* O tipo de contato
+          é requerido.</p>
+        </div>
+      </div>
       <div class="col-span-6 sm:col-span-6">
         <div class="flex items-center">
           <input id="isFavorite" type="checkbox"

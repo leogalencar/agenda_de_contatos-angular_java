@@ -9,7 +9,8 @@ public record ContactResponse(
     String city,
     String gender,
     String birthday,
-    Boolean isFavorite
+    Boolean isFavorite,
+    String category
 ) {
     
 }

@@ -61,6 +61,7 @@ public class ContactService {
             aux.setGender(request.gender());
             aux.setBirthday(request.birthday());
             aux.setIsFavorite(request.isFavorite());
+            aux.setCategory(request.category());
 
             this.contactRepository.save(aux);
         } catch (EntityNotFoundException e) {

@@ -22,7 +22,10 @@ public record ContactRequest(
     
     String birthday,
 
-    Boolean isFavorite
+    Boolean isFavorite,
+
+    @NotBlank(message = "O tipo de contato não pode ser nulo")
+    String category
 ) {
     
 }

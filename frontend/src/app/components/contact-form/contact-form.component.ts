@@ -34,6 +34,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
       gender: ['Selecione o seu sexo', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]],
       birthday: [''],
       isFavorite: [false],
+      category: ['Pessoal', [Validators.required]],
     });
   }
   // TODO : Fazer validações
@@ -49,6 +50,10 @@ export class ContactFormComponent implements OnInit, OnChanges {
           'Selecione o seu sexo',
           { onlySelf: true }
         );
+        this.formGroupContact.controls['category'].setValue(
+          'Pessoal',
+          { onlySelf: true }
+        );
       })
   }
 
@@ -60,6 +65,10 @@ export class ContactFormComponent implements OnInit, OnChanges {
         this.formGroupContact.reset();
         this.formGroupContact.controls['gender'].setValue(
           'Selecione o seu sexo',
+          { onlySelf: true }
+        );
+        this.formGroupContact.controls['category'].setValue(
+          'Pessoal',
           { onlySelf: true }
         );
       }
@@ -159,5 +168,9 @@ export class ContactFormComponent implements OnInit, OnChanges {
 
   get isFavorite(): any {
     return this.formGroupContact.get('isFavorite');
+  }
+
+  get category(): any {
+    return this.formGroupContact.get('category');
   }
 }

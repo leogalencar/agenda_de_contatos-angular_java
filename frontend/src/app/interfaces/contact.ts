@@ -8,4 +8,5 @@ export interface IContact {
   gender: string
   birthday: string
   isFavorite: boolean
+  category: string
 }
