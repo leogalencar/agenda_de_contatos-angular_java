@@ -18,16 +18,21 @@
   <div class="p-6 space-y-6">
     <div class="grid grid-cols-6 gap-6">
       <div class="col-span-6 sm:col-span-3">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome*</label>
         <input type="text" name="name" id="name"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="John Doe" formControlName="name">
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="name.touched && name.hasError('required')">* O nome
+          é requerido.</p>
       </div>
       <div class="col-span-6 sm:col-span-3">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail</label>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail*</label>
         <input type="email" name="email" id="email"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="exemplo@exemplo.com" formControlName="email">
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="email.touched && email.hasError('required')">* O
+          e-mail
+          é requerido.</p>
       </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone</label>
@@ -36,10 +41,12 @@
           placeholder="(11) 1234-5678" formControlName="phone">
       </div>
       <div class="col-span-6 sm:col-span-3">
-        <label for="cellphone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular</label>
+        <label for="cellphone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Celular*</label>
         <input type="text" name="cellphone" id="cellphone" mask="(00) 00000-0000"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="(11) 12345-6789" formControlName="cellphone">
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500"
+          *ngIf="cellphone.touched && cellphone.hasError('required')">* O celular é requerido.</p>
       </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cidade</label>
@@ -48,7 +55,7 @@
           placeholder="Itu" formControlName="city">
       </div>
       <div class="col-span-6 sm:col-span-3">
-        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo</label>
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo*</label>
         <select id="countries"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           formControlName="gender">
@@ -56,6 +63,9 @@
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
         </select>
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500"
+          *ngIf="gender.touched && (gender.hasError('minlength') || gender.hasError('maxlength'))">* O sexo
+          é requerido.</p>
       </div>
       <div class="col-span-6 sm:col-span-3">
         <label for="birthday" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de
@@ -79,6 +89,8 @@
     class="flex items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
     <button type="submit"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      (click)="onSubmit()">Salvar</button>
+      [ngClass]="{'disabled bg-red-500 hover:bg-red-500' : !formGroupContact.valid}"
+      (click)="onSubmit()"
+      [disabled]="!formGroupContact.valid">Salvar</button>
   </div>
 </form>

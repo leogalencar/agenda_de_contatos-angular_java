@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IContact } from '../../interfaces/contact';
 
 @Component({
@@ -23,16 +23,19 @@ export class ContactFormComponent implements OnChanges {
   constructor(private formBuilder: FormBuilder) {
     this.formGroupContact = formBuilder.group({
       id: [''],
-      name: [''],
-      email: [''],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       phone: [''],
-      cellphone: [''],
+      cellphone: ['', Validators.required],
       city: [''],
-      gender: ['Selecione o seu sexo'],
+      gender: ['Selecione o seu sexo', [Validators.required, Validators.minLength(8), Validators.maxLength(9)]],
       birthday: [''],
       isFavorite: [false],
     });
   }
+  // TODO : Fazer validações
+  // TODO : Fazer backend
+  // TODO : fazer upload de imagem de perfil
 
   formGroupContact: FormGroup;
 
@@ -75,7 +78,12 @@ export class ContactFormComponent implements OnChanges {
       });
     }
 
-    this.formSubmitted.emit(this.formGroupContact.value);
+    if (this.formGroupContact.valid) {
+      this.formSubmitted.emit(this.formGroupContact.value);
+    }
+    else {
+      this.formSubmitted.emit(null);
+    }
   }
 
   cancel() {
@@ -101,5 +109,42 @@ export class ContactFormComponent implements OnChanges {
       return format.replace(/\d/g, (c) => match[parseInt(c)]);
     }
     return number;
+  }
+
+  // Getters
+  get id(): any {
+    return this.formGroupContact.get('id');
+  }
+
+  get name(): any {
+    return this.formGroupContact.get('name');
+  }
+
+  get email(): any {
+    return this.formGroupContact.get('email');
+  }
+
+  get phone(): any {
+    return this.formGroupContact.get('phone');
+  }
+
+  get cellphone(): any {
+    return this.formGroupContact.get('cellphone');
+  }
+
+  get city(): any {
+    return this.formGroupContact.get('city');
+  }
+
+  get gender(): any {
+    return this.formGroupContact.get('gender');
+  }
+
+  get birthday(): any {
+    return this.formGroupContact.get('birthday');
+  }
+
+  get isFavorite(): any {
+    return this.formGroupContact.get('isFavorite');
   }
 }
