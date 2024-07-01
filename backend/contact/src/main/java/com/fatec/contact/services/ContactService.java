@@ -39,4 +39,13 @@ public class ContactService {
 
         return ContactMapper.toDTO(this.contactRepository.save(contact));
     }
+
+    public void deleteContact(int id) {
+        if (this.contactRepository.existsById(id)) {
+            this.contactRepository.deleteById(id);
+        }
+        else {
+            throw new EntityNotFoundException("Contato não cadastrado");
+        }
+    }
 }

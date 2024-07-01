@@ -3,6 +3,7 @@ package com.fatec.contact.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,5 +35,10 @@ public class ContactController {
     @PostMapping
     public ContactResponse saveContact(@RequestBody ContactRequest contact) {
         return this.contactService.saveContact(contact);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteContact(@PathVariable int id) {
+        this.contactService.deleteContact(id);
     }
 }
