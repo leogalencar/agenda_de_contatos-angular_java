@@ -17,6 +17,12 @@
     <div class="flex items-center justify-center">
       <img class="w-64 h-64 rounded-full" src="./assets/profilePicExample.jpg" alt="Jese image">
     </div>
+    <div class="flex items-center justify-center">
+      <mat-icon class="scale-[2]" fontIcon="{{ contact.category === 'Pessoal' ? 'group' : 'work' }}" [ngClass]="{
+              'text-blue-400': contact.category === 'Pessoal',
+              'text-amber-600': contact.category === 'Profissional'
+              }"></mat-icon>
+    </div>
     <div class="flex flex-col items-center justify-center">
       <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Informações</h2>
       <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
@@ -41,6 +47,7 @@
         <li>
           <b>Data de nascimento:</b> {{ contact.birthday | date: 'dd/MM/yyyy' }}
         </li>
+        <li><b>Tipo de contato:</b> {{ contact.category }}</li>
         <li class="flex items-center gap-3">
           <b>Favorito:</b>
           <div [ngClass]="{
