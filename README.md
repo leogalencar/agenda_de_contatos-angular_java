@@ -38,8 +38,8 @@ Clone o projeto usando `git clone https://github.com/leogalencar/projeto_final_j
 - Spring Boot Extension Pack
 
 ## Front-end
-Para executar o front-end, abra a pasta `frontend` e execute `ng s -o`, ou se preferir:
-- `cd frontend && ng s -o`
+Para executar o front-end, abra a pasta `frontend`, execute `npm install` e depois que terminar execute `ng s -o`, ou se preferir:
+- `cd frontend && npm install && ng s -o`
 
 ## Back-end
-Para executar o front-end, navegue até o arquivo `/projeto_final_java_angular/backend/contact/src/main/java/com/fatec/contact/ContactApplication.java` e dê Run
+Para executar o front-end, navegue até o arquivo `/projeto_final_java_angular/backend/contact/src/main/java/com/fatec/contact/ContactApplication.java` e clique em "Run"
