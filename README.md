@@ -1,4 +1,4 @@
-# Projeto final de Java e Angular
+# Agenda de Contatos feita com Angular e Java
 Projeto feito para a tarefa final da disciplina Eletiva Linguagem de Programação IV INTERNET. O projeto consiste em uma agenda de contatos desenvolvida com o framework de front-end Angular e o ecossistema Spring com Java no back-end.
 
 # Agenda de contatos
